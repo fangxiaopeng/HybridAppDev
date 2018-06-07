@@ -4,7 +4,11 @@ import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
 
+import com.example.weex.adapter.DefaultAccessibilityRoleAdapter;
+import com.example.weex.adapter.DefaultWebSocketAdapterFactory;
 import com.example.weex.adapter.ImageAdapter;
+import com.example.weex.adapter.InterceptWXHttpAdapter;
+import com.example.weex.adapter.JSExceptionAdapter;
 import com.example.weex.component.RichText;
 import com.example.weex.module.MyModule;
 import com.taobao.weex.InitConfig;
@@ -42,14 +46,14 @@ public class WXApplication extends Application{
 
         InitConfig config = new InitConfig.Builder()
                 .setImgAdapter(new ImageAdapter())
-//                .setWebSocketAdapterFactory(new DefaultWebSocketAdapterFactory())
-//                .setJSExceptionAdapter(new JSExceptionAdapter())
-//                .setHttpAdapter(new InterceptWXHttpAdapter())
+//                .setWebSocketAdapterFactory(new DefaultWebSocketAdapterFactory())   // 暂未实现
+                .setJSExceptionAdapter(new JSExceptionAdapter())
+//                .setHttpAdapter(new InterceptWXHttpAdapter())   //暂未实现
                 .build();
 
         WXSDKEngine.initialize(this,config);
 
-//        WXSDKManager.getInstance().setAccessibilityRoleAdapter(new DefaultAccessibilityRoleAdapter());
+        WXSDKManager.getInstance().setAccessibilityRoleAdapter(new DefaultAccessibilityRoleAdapter());
 
     }
 
