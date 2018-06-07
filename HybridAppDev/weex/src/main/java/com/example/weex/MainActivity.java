@@ -21,6 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements IWXRenderListener {
+
     public final static String ROOT = "root";
     private final static String TAG = "WEEX";
     private String URL = "http://h5.m.taobao.com/js/src/weexlist.js";
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements IWXRenderListener
         // 加载网易严选
         loadWeexPageRemote("http://doc.zwwill.com/yanxuan/jsbundles/index.js");
 
+        // 加载本地js文件
 //        loadWeexPageLocal(true, PATH);
     }
 
@@ -155,7 +157,7 @@ public class MainActivity extends AppCompatActivity implements IWXRenderListener
                     }
                     mInstance = new WXSDKInstance(MainActivity.this);
                     Map<String, Object> options = new HashMap<>();
-                    options.put(WXSDKInstance.BUNDLE_URL, "file://assets/hello_weex.js");
+                    options.put(WXSDKInstance.BUNDLE_URL, "file://assets/index.js");
                     mInstance.registerRenderListener(MainActivity.this);
                     perfStart = true;
                     Log.v(TAG, "Start: " + startTime);
