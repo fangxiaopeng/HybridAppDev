@@ -5,6 +5,7 @@ import android.app.Application;
 import android.os.Bundle;
 
 import com.example.weex.adapter.ImageAdapter;
+import com.example.weex.component.RichText;
 import com.example.weex.module.MyModule;
 import com.taobao.weex.InitConfig;
 import com.taobao.weex.WXEnvironment;
@@ -80,7 +81,11 @@ public class WXApplication extends Application{
      * @exception/throws
      */
     private void registerExpandComponent(){
-
+        try {
+            WXSDKEngine.registerComponent("richText", RichText.class);
+        } catch (WXException e) {
+            e.printStackTrace();
+        }
     }
 
 
