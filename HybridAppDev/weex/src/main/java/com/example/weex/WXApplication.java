@@ -64,7 +64,7 @@ public class WXApplication extends Application{
      */
     private void registerExpandModule(){
         try {
-            // 注册module
+            // 注册MyModule
             WXSDKEngine.registerModule("MyModule", MyModule.class);
         } catch (WXException e) {
             e.printStackTrace();
@@ -72,7 +72,7 @@ public class WXApplication extends Application{
     }
 
     /**
-     * @Description:
+     * @Description:    注册Component拓展
      *
      * @Author:  fxp
      * @Date:    2018/6/7   上午10:50
