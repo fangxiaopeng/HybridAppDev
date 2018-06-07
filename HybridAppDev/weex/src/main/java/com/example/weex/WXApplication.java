@@ -5,16 +5,39 @@ import android.app.Application;
 import android.os.Bundle;
 
 import com.example.weex.adapter.ImageAdapter;
+import com.example.weex.module.MyModule;
 import com.taobao.weex.InitConfig;
 import com.taobao.weex.WXEnvironment;
 import com.taobao.weex.WXSDKEngine;
 import com.taobao.weex.WXSDKManager;
+import com.taobao.weex.common.WXException;
 
 public class WXApplication extends Application{
 
     @Override
     public void onCreate() {
         super.onCreate();
+
+        initWeexSDK();
+
+        registerExpandModule();
+
+        registerExpandComponent();
+
+        registerActivityLifecycleCallbacks(getActivityLifecycleCallbacks());
+
+    }
+
+    /**
+     * @Description:    初始化WXSDKManager
+     *
+     * @Author:  fxp
+     * @Date:    2018/6/7   上午10:32
+     * @param
+     * @return   void
+     * @exception/throws
+     */
+    private void initWeexSDK(){
 
         InitConfig config = new InitConfig.Builder()
                 .setImgAdapter(new ImageAdapter())
@@ -27,8 +50,52 @@ public class WXApplication extends Application{
 
 //        WXSDKManager.getInstance().setAccessibilityRoleAdapter(new DefaultAccessibilityRoleAdapter());
 
+    }
 
-        registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
+    /**
+     * @Description:    注册Module拓展
+     *
+     * @Author:  fxp
+     * @Date:    2018/6/7   上午10:36
+     * @param
+     * @return   void
+     * @exception/throws
+     */
+    private void registerExpandModule(){
+        try {
+            // 注册module
+            WXSDKEngine.registerModule("MyModule", MyModule.class);
+        } catch (WXException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * @Description:
+     *
+     * @Author:  fxp
+     * @Date:    2018/6/7   上午10:50
+     * @param
+     * @return   void
+     * @exception/throws
+     */
+    private void registerExpandComponent(){
+
+    }
+
+
+    /**
+     * @Description:  获取ActivityLifecycleCallbacks
+     *
+     * @Author:  fxp
+     * @Date:    2018/6/7   上午10:38
+     * @param
+     * @return   android.app.Application.ActivityLifecycleCallbacks
+     * @exception/throws
+     */
+    private ActivityLifecycleCallbacks getActivityLifecycleCallbacks(){
+
+        return new ActivityLifecycleCallbacks() {
             @Override
             public void onActivityCreated(Activity activity, Bundle bundle) {
 
@@ -71,8 +138,7 @@ public class WXApplication extends Application{
                     WXSDKManager.getInstance().notifySerializeCodeCache();
                 }
             }
-        });
-
+        };
     }
 
     /**
