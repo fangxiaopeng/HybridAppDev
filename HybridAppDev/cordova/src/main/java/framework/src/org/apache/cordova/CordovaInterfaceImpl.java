@@ -45,7 +45,7 @@ public class CordovaInterfaceImpl implements CordovaInterface {
 
     protected ActivityResultHolder savedResult;
     protected CallbackMap permissionResultCallbacks;
-    protected CordovaPlugin activityResultCallback;
+    public CordovaPlugin activityResultCallback;
     protected String initCallbackService;
     protected int activityResultRequestCode;
     protected boolean activityWasDestroyed = false;
