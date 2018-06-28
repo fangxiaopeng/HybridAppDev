@@ -17,7 +17,7 @@
        specific language governing permissions and limitations
        under the License.
 -->
-<widget id="io.cordova.helloCordova" version="2.0.0" xmlns="http://www.w3.org/ns/widgets">
+<widget id="com.example.cordova" version="2.0.0" xmlns="http://www.w3.org/ns/widgets">
     <name>Hello Cordova</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
@@ -30,15 +30,81 @@
     <access origin="https://*.google.com/*" />
     <access origin="https://*.googleapis.com/*" />
     <access origin="https://*.gstatic.com/*" />
-    <content src="index.html" />
+
+    <!-- add by myself at 2018.6.27 02:51 -->
+    <!-- start -->
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <access origin="cdvfile://*" />
+    <allow-intent href="market:*" />
+    <!-- end -->
+
+    <content src="test/index.html" />
     <preference name="errorUrl" value="file:///android_asset/www/htmlnotfound/error.html" />
     <preference name="loglevel" value="DEBUG" />
     <preference name="useBrowserHistory" value="true" />
     <preference name="exit-on-suspend" value="false" />
     <preference name="showTitle" value="true" />
     <preference name="BackgroundColor" value="#000000" />
-<!--    <feature name="LifeCycle">
-        <param name="android-package" value="org.apache.cordova.unittests.LifeCyclePlugin" />
+
+    <!-- add by myself at 2018.6.27 02:54 -->
+    <!-- start -->
+    <preference name="AutoHideSplashScreen" value="true" />
+    <preference name="SplashScreenDelay" value="5000" />
+    <preference name="FadeSplashScreen" value="true" />
+    <preference name="WebViewBounce" value="false" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="Orientation" value="portrait" />
+    <preference name="AndroidPersistentFileLocation" value="Compatibility" />
+    <preference name="iosPersistentFileLocation" value="Compatibility" />
+    <preference name="AndroidExtraFilesystems" value="sdcard" />
+    <preference name="SplashMaintainAspectRatio" value="true" />
+    <!-- end -->
+
+    <feature name="Camera">
+        <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
+    </feature>
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
+    <feature name="Notification">
+        <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
+    </feature>
+    <feature name="File">
+        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
         <param name="onload" value="true" />
-    </feature>-->
+    </feature>
+    <feature name="FileTransfer">
+        <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
+    </feature>
+    <feature name="InAppBrowser">
+        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+    </feature>
+    <feature name="Media">
+        <param name="android-package" value="org.apache.cordova.media.AudioHandler" />
+    </feature>
+    <feature name="Capture">
+        <param name="android-package" value="org.apache.cordova.mediacapture.Capture" />
+    </feature>
+    <feature name="NetworkStatus">
+        <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
+    </feature>
+    <feature name="SplashScreen">
+        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="StatusBar">
+        <param name="android-package" value="org.apache.cordova.statusbar.StatusBar" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+
 </widget>
