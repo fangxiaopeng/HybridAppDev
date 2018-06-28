@@ -17,7 +17,7 @@
        under the License.
 */
 
-package com.example.cordova;
+package com.example.cordova.activity;
 
 import android.os.Bundle;
 
@@ -46,7 +46,7 @@ public class TestActivity extends CordovaActivity {
             if (extras.getBoolean("cdvStartInBackground", false)) {
                 moveTaskToBack(true);
             }
-            launchUrl = extras.getString("startUrl", "index.html");
+            launchUrl = extras.getString("startUrl", "file:///android_asset/www/test/index.html");
         }
 
         // Set by <content src="index.html" /> in config.xml
