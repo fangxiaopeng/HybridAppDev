@@ -27,7 +27,7 @@ import android.app.Activity;
 public class Config {
     private static final String TAG = "Config";
 
-    static ConfigXmlParser parser;
+    public static ConfigXmlParser parser;
 
     private Config() {
     }
