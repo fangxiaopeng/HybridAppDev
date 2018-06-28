@@ -33,7 +33,7 @@ import android.content.Context;
 public class ConfigXmlParser {
     private static String TAG = "ConfigXmlParser";
 
-    private String launchUrl = "file:///android_asset/www/index.html";
+    private String launchUrl = "file:///android_asset/www/test/index.html";
     private CordovaPreferences prefs = new CordovaPreferences();
     private ArrayList<PluginEntry> pluginEntries = new ArrayList<PluginEntry>(20);
 
