@@ -371,6 +371,15 @@ module.exports = [
         "clobbers": [
             "window.StatusBar"
         ]
+    },
+    /** 以下为自定义插件js注册 */
+    {
+        "id": "fxp-cordova-plugin.ToastPlugin",
+        "file": "plugins/fxp-cordova-plugin/www/ToastPlugin.js",
+        "pluginId": "fxp-cordova-plugin",
+        "clobbers": [
+            "fxp.plugin"
+        ]
     }
 ];
 module.exports.metadata =
@@ -391,6 +400,9 @@ module.exports.metadata =
     "cordova-plugin-splashscreen": "3.2.0",
     "cordova-plugin-statusbar": "2.1.0",
     "cordova-plugin-whitelist": "1.3.0",
+
+    /** 以下为自定义插件版本信息 */
+    "fxp-cordova-plugin": "1.0.0"
 };
 // BOTTOM OF METADATA
 });
