@@ -107,4 +107,9 @@
         <param name="onload" value="true" />
     </feature>
 
+    <!-- 以下为自定义插件 -->
+    <feature name="ToastPlugin">
+        <param name="android-package" value="fxp.cordova.plugin.customplugin.ToastPlugin" />
+    </feature>
+
 </widget>
