@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta name="viewport" content="width=320, user-scalable=no" />
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <title>Cordova Tests</title>
+  <link rel="stylesheet" href="master.css" type="text/css" media="screen" title="no title">
+  <script type="text/javascript" charset="utf-8" src="../cordova.js"></script>
+  <script>
+        function init() {
+            document.addEventListener("deviceready", function(){
+                console.log("test.html init");
+            }, true);
+        }
+        function showToast() {
+            fxp.plugin.showToast("自定义插件实现 - 以最简单的Toast为例");
+            // Cordova.exec(null,null,"ToastPlugin","showToast",["自定义插件实现"]);
+        }
+      </script>
+
+</head>
+<body onload="init();" id="stage" class="theme">
+<h1>Cordova Android Native Tests</h1>
+<button class="btn large" onclick="showToast();">Show Toast</button>
+<div id="info">
+  <h4>自定义插件实现 - 以最简单的Toast为例(无同步/异步回调)</h4>
+</div>
+</body>
+</html>
