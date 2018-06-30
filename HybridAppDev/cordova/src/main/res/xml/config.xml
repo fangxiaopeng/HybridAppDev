@@ -111,5 +111,8 @@
     <feature name="ToastPlugin">
         <param name="android-package" value="fxp.cordova.plugin.customplugin.ToastPlugin" />
     </feature>
+    <feature name="ContactsPlugin">
+        <param name="android-package" value="fxp.cordova.plugin.customplugin.ContactsPlugin" />
+    </feature>
 
 </widget>
