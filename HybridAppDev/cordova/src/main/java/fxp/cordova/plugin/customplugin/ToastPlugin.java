@@ -52,7 +52,7 @@ public class ToastPlugin extends CordovaPlugin{
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         Log.e(TAG, "action --> " + action + "\n args --> " + args);
-        final Context mContext = this.cordova.getActivity();
+        Context mContext = this.cordova.getActivity();
         if ("showToast".equals(action)) {
             String msg = args.getString(0);
             Toast.makeText(mContext, msg, Toast.LENGTH_LONG).show();
