@@ -16,6 +16,15 @@
             fxp.plugin.showToast("自定义插件实现 - 以最简单的Toast为例");
             // Cordova.exec(null,null,"ToastPlugin","showToast",["自定义插件实现"]);
         }
+        function getContacts(){
+            Cordova.exec(onSuccess,onFail,"ContactsPlugin","getContracts",[]);
+            function onSuccess(data) {
+                console.log(JSON.stringify(data));
+            }
+            function onFail(message) {
+                alert('Failed because: ' + message);
+            }
+        }
       </script>
 
 </head>
@@ -23,7 +32,11 @@
 <h1>Cordova Android Native Tests</h1>
 <button class="btn large" onclick="showToast();">Show Toast</button>
 <div id="info">
-  <h4>自定义插件实现 - 以最简单的Toast为例(无同步/异步回调)</h4>
+  <h4>自定义插件实现 - 以最简单的Toast为例(无回调)</h4>
+</div>
+<button class="btn large" onclick="getContacts();">Get Contacts</button>
+<div id="info">
+  <h4>自定义插件实现 - 获取联系人(异步回调)</h4>
 </div>
 </body>
 </html>
