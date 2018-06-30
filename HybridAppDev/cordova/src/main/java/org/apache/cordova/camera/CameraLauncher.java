@@ -22,7 +22,6 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -39,7 +38,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
-import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
 
@@ -62,7 +60,6 @@ import framework.src.org.apache.cordova.CallbackContext;
 import framework.src.org.apache.cordova.CordovaPlugin;
 import framework.src.org.apache.cordova.LOG;
 import framework.src.org.apache.cordova.PluginResult;
-
 
 /**
  * This class launches the camera view, allows the user to take a picture, closes the camera view,
@@ -121,14 +118,6 @@ public class CameraLauncher extends CordovaPlugin implements MediaScannerConnect
     private Uri croppedUri;
     private ExifHelper exifData;            // Exif data from source
     private String applicationId;
-
-    public boolean isM3(Context context) {
-        return TextUtils.equals(context.getPackageName(), "mpaas.xinghuo.hiboard");
-    }
-
-    public boolean isMate10(Context context) {
-        return TextUtils.equals(context.getPackageName(), "com.huawei.intelligent");
-    }
 
     /**
      * Executes the request and returns PluginResult.
