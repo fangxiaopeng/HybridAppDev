@@ -146,17 +146,6 @@ public class CameraLauncher extends CordovaPlugin implements MediaScannerConnect
         //this.applicationId = (String) BuildHelper.getBuildConfigValue(cordova.getActivity(), "APPLICATION_ID");
         //this.applicationId = preferences.getString("applicationId", this.applicationId);
         this.applicationId = this.webView.getContext().getPackageName();
-        if(this.applicationId == null){
-            if(isM3(this.webView.getContext())){
-                this.applicationId = "mpaas.xinghuo.hiboard";
-            }else if(isMate10(this.webView.getContext())){
-                this.applicationId = "com.huawei.intelligent";
-            }else {
-                this.applicationId = "com.xinghuo.mpaas";
-            }
-        }
-
-//        this.applicationId = preferences.getString("applicationId", this.applicationId);
 
         if (action.equals("takePicture")) {
             this.srcType = CAMERA;
