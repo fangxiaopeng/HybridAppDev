@@ -40,7 +40,7 @@ public class MainFragment extends CordovaFragment{
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        loadUrl("file:///android_asset/www/test/test.html");
+        loadUrl("file:///android_asset/www/test/index.html");
     }
 
     @Nullable
