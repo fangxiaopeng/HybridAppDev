@@ -27,12 +27,6 @@
   }
 </script>
 
-<script>
-  module.exports = {
-
-  }
-</script>
-
 <style scoped>
   .label {
     color: #41B883;
