@@ -4,17 +4,18 @@ import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
 
-import com.example.weex.adapter.DefaultAccessibilityRoleAdapter;
-import com.example.weex.adapter.DefaultWebSocketAdapterFactory;
-import com.example.weex.adapter.ImageAdapter;
-import com.example.weex.adapter.InterceptWXHttpAdapter;
-import com.example.weex.adapter.JSExceptionAdapter;
+import com.alibaba.weex.commons.adapter.DefaultAccessibilityRoleAdapter;
+import com.alibaba.weex.commons.adapter.DefaultWebSocketAdapterFactory;
+import com.alibaba.weex.commons.adapter.ImageAdapter;
+import com.alibaba.weex.commons.adapter.InterceptWXHttpAdapter;
+import com.alibaba.weex.commons.adapter.JSExceptionAdapter;
 import com.example.weex.component.RichText;
 import com.example.weex.module.MyModule;
 import com.taobao.weex.InitConfig;
 import com.taobao.weex.WXEnvironment;
 import com.taobao.weex.WXSDKEngine;
 import com.taobao.weex.WXSDKManager;
+import com.taobao.weex.bridge.WXBridgeManager;
 import com.taobao.weex.common.WXException;
 
 public class WXApplication extends Application{
@@ -30,7 +31,6 @@ public class WXApplication extends Application{
         registerExpandComponent();
 
         registerActivityLifecycleCallbacks(getActivityLifecycleCallbacks());
-
     }
 
     /**
@@ -43,18 +43,23 @@ public class WXApplication extends Application{
      * @exception/throws
      */
     private void initWeexSDK(){
+        WXBridgeManager.updateGlobalConfig("wson_on");
+        WXEnvironment.setOpenDebugLog(true);
+        WXEnvironment.setApkDebugable(true);
+        WXSDKEngine.addCustomOptions("appName", "WXSample");
+        WXSDKEngine.addCustomOptions("appGroup", "WXApp");
 
         InitConfig config = new InitConfig.Builder()
+                //.setImgAdapter(new FrescoImageAdapter())// use fresco adapter
                 .setImgAdapter(new ImageAdapter())
-//                .setWebSocketAdapterFactory(new DefaultWebSocketAdapterFactory())   // 暂未实现
+                .setWebSocketAdapterFactory(new DefaultWebSocketAdapterFactory())
                 .setJSExceptionAdapter(new JSExceptionAdapter())
-//                .setHttpAdapter(new InterceptWXHttpAdapter())   //暂未实现
+                .setHttpAdapter(new InterceptWXHttpAdapter())
                 .build();
 
         WXSDKEngine.initialize(this,config);
 
         WXSDKManager.getInstance().setAccessibilityRoleAdapter(new DefaultAccessibilityRoleAdapter());
-
     }
 
     /**
