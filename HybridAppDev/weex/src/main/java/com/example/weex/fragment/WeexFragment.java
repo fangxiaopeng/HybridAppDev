@@ -75,7 +75,7 @@ public class WeexFragment extends Fragment implements IWXRenderListener{
 
         View view = inflater.inflate(R.layout.weex_fragment, container, false);
 
-        weexLayout = (LinearLayout)view.findViewById(R.id.weex_layout);
+        weexLayout = view.findViewById(R.id.weex_layout);
 
         return view;
     }
@@ -155,7 +155,7 @@ public class WeexFragment extends Fragment implements IWXRenderListener{
          * width 为-1 默认全屏，可以自己定制。
          * height =-1 默认全屏，可以自己定制。
          */
-        mWXSDKInstance.render("WXSample", WXFileUtils.loadAsset(path, this.getContext()), options, null, -1, -1, WXRenderStrategy.APPEND_ASYNC);
+        mWXSDKInstance.render(TAG, WXFileUtils.loadAsset(path, this.getContext()), options, null, -1, -1, WXRenderStrategy.APPEND_ASYNC);
     }
 
     /**
