@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 
-import com.example.weex.adapter.ImageAdapter;
+import com.alibaba.weex.commons.adapter.ImageAdapter;
 import com.taobao.weex.IWXRenderListener;
 import com.taobao.weex.InitConfig;
 import com.taobao.weex.WXEnvironment;
@@ -157,18 +157,12 @@ public class MainActivity extends AppCompatActivity implements IWXRenderListener
                     }
                     mInstance = new WXSDKInstance(MainActivity.this);
                     Map<String, Object> options = new HashMap<>();
-                    options.put(WXSDKInstance.BUNDLE_URL, "file://assets/index.js");
+                    options.put(WXSDKInstance.BUNDLE_URL, "file://assets/" + path);
                     mInstance.registerRenderListener(MainActivity.this);
                     perfStart = true;
-                    Log.v(TAG, "Start: " + startTime);
                     startTime = System.currentTimeMillis();
 
-                    mInstance.render(TAG,
-                            WXFileUtils.loadAsset(path, MainActivity.this),
-                            options,
-                            null,
-                            WXRenderStrategy.APPEND_ASYNC);
-
+                    mInstance.render(TAG, WXFileUtils.loadAsset(path, MainActivity.this), options, null, WXRenderStrategy.APPEND_ASYNC);
                 } else {
                     root.removeAllViews();
                     perfStart = true;
