@@ -1,4 +1,4 @@
-package com.example.weex;
+package com.example.weex.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +9,7 @@ import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 
 import com.alibaba.weex.commons.adapter.ImageAdapter;
+import com.example.weex.R;
 import com.taobao.weex.IWXRenderListener;
 import com.taobao.weex.InitConfig;
 import com.taobao.weex.WXEnvironment;
@@ -162,6 +163,12 @@ public class MainActivity extends AppCompatActivity implements IWXRenderListener
                     perfStart = true;
                     startTime = System.currentTimeMillis();
 
+                    try{
+                        // 渲染之前延时1秒（解决页面空白问题）
+                        Thread.sleep(1000);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
                     mInstance.render(TAG, WXFileUtils.loadAsset(path, MainActivity.this), options, null, WXRenderStrategy.APPEND_ASYNC);
                 } else {
                     root.removeAllViews();
