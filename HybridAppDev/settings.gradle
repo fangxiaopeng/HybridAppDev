@@ -1,1 +1,1 @@
-include ':app', ':weex', ':agentweb', ':cordova'
+include ':app', ':weex', ':agentweb', ':cordova', ':weex_sdk'
