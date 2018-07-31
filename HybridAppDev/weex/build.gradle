@@ -12,6 +12,12 @@ android {
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+        /************************************** weex ndk start **************************************/
+        ndk {
+            abiFilters "x86"
+            abiFilters "armeabi"
+        }
+        /************************************** weex ndk end **************************************/
     }
 
     buildTypes {
@@ -26,25 +32,26 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-//    implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-//    implementation 'com.taobao.android:weex_sdk:0.5.1@aar'
-    implementation 'com.taobao.android:weex_sdk:0.18.0-beta-3'
-
     implementation 'com.android.support:support-v4:27.0.0'
     implementation 'com.android.support:appcompat-v7:27.0.0'
     implementation 'com.android.support:recyclerview-v7:27.0.0'
 
+    /************************************** weex dependencies start **************************************/
     implementation 'com.alibaba:fastjson:1.2.8'
-
+    implementation 'com.facebook.fresco:fresco:0.10.0'
     implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.squareup.okhttp:okhttp:2.3.0'
+    implementation 'com.squareup.okhttp:okhttp-ws:2.3.0'
 
-//（可选）支持调试的依赖，参考https://github.com/weexteam/weex-devtools-android/blob/master/README-zh.md
-    implementation 'com.taobao.android:weex_inspector:0.0.8.5'
-    implementation 'com.google.code.findbugs:jsr305:2.0.1'
-    implementation 'com.taobao.android:weex_inspector:0.0.8.5'
+    implementation 'com.taobao.android.weex_inspection:protocol:1.1.4.1'
+    implementation 'com.taobao.android:weex_analyzer:0.1.0.5'
+    implementation 'com.taobao.android.weex_inspection:urlconnection_interceptor:1.0.0'
+
+    implementation project(':weex_sdk')
+    /************************************** weex dependencies end **************************************/
 }
