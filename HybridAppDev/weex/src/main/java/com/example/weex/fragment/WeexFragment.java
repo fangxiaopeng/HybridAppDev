@@ -119,6 +119,7 @@ public class WeexFragment extends Fragment implements IWXRenderListener{
     private void loadWeexPage(){
         try{
             // 渲染之前延时1秒（解决页面空白问题）
+            // Issue: Weex页面加载失败，onException error Code: -1001；https://github.com/fangxiaopeng/HybridAppDev/issues/1
             Thread.sleep(1000);
 
             int type = getArguments().getInt("type");
