@@ -3,6 +3,7 @@ package com.example.weex;
 import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.alibaba.weex.commons.adapter.DefaultAccessibilityRoleAdapter;
 import com.alibaba.weex.commons.adapter.DefaultWebSocketAdapterFactory;
@@ -19,6 +20,8 @@ import com.taobao.weex.bridge.WXBridgeManager;
 import com.taobao.weex.common.WXException;
 
 public class WXApplication extends Application{
+
+    private final static String TAG = WXApplication.class.getSimpleName();
 
     @Override
     public void onCreate() {
@@ -60,6 +63,18 @@ public class WXApplication extends Application{
         WXSDKEngine.initialize(this,config);
 
         WXSDKManager.getInstance().setAccessibilityRoleAdapter(new DefaultAccessibilityRoleAdapter());
+
+        WXSDKManager.getInstance().registerInstanceLifeCycleCallbacks(new WXSDKManager.InstanceLifeCycleCallbacks() {
+            @Override
+            public void onInstanceDestroyed(String instanceId) {
+                Log.d(TAG, "onInstanceDestroyed instanceId-" + instanceId);
+            }
+
+            @Override
+            public void onInstanceCreated(String instanceId) {
+                Log.d(TAG, "onInstanceCreated instanceId-" + instanceId);
+            }
+        });
     }
 
     /**
