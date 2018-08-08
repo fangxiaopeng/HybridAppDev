@@ -13,8 +13,8 @@ public class WeexActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weex);
 
-//        loadWeexPage(0, "index.js");
-        loadWeexPage(1, "http://doc.zwwill.com/yanxuan/jsbundles/index.js");
+        loadWeexPage(0, "weex/dist/index.js");
+//        loadWeexPage(1, "http://doc.zwwill.com/yanxuan/jsbundles/index.js");
     }
 
     /**
