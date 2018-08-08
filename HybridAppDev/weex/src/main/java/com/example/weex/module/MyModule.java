@@ -1,5 +1,6 @@
 package com.example.weex.module;
 
+import android.util.Log;
 import android.widget.Toast;
 
 import com.taobao.weex.annotation.JSMethod;
@@ -17,12 +18,18 @@ import com.taobao.weex.common.WXModule;
  */
 public class MyModule extends WXModule{
 
+    private final static String TAG = MyModule.class.getSimpleName();
+
     //run ui thread
     @JSMethod(uiThread = true)
     public void printLog(String msg) {
-        Toast.makeText(mWXSDKInstance.getContext(),msg,Toast.LENGTH_SHORT).show();
+        Log.e(TAG, msg);
     }
 
+    @JSMethod(uiThread = true)
+    public void showToast(String msg){
+        Toast.makeText(mWXSDKInstance.getContext(),msg,Toast.LENGTH_SHORT).show();
+    }
 
 
 }
