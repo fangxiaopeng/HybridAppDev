@@ -3,9 +3,12 @@ package com.example.weex.module;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.weex.utils.AppUtil;
 import com.taobao.weex.annotation.JSMethod;
 import com.taobao.weex.bridge.JSCallback;
 import com.taobao.weex.common.WXModule;
+
+import org.json.JSONObject;
 
 
 /**
@@ -34,7 +37,7 @@ public class MyModule extends WXModule{
 
     /**
      * @Description:    获取设备型号
-     * 带回调示例
+     * 回调示例
      *
      * @Author:  fxp
      * @Date:    2018/8/8   下午5:56
@@ -47,6 +50,21 @@ public class MyModule extends WXModule{
         callback.invoke(android.os.Build.MODEL);
     }
 
-
+    /**
+     * @Description:    运行应用
+     *
+     * @Author:  fxp
+     * @Date:    2018/8/8   下午6:34
+     * @param    packName
+     * @param    callback
+     * @return   void
+     * @exception/throws
+     */
+    @JSMethod(uiThread = false)
+    public void runApp(String packName, JSCallback callback){
+        AppUtil appUtil = new AppUtil(this.mWXSDKInstance.getContext());
+        appUtil.runApp(packName, new JSONObject());
+//        callback.invoke("");
+    }
 
 }
