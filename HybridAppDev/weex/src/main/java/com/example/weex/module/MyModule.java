@@ -23,10 +23,6 @@ public class MyModule extends WXModule{
         Toast.makeText(mWXSDKInstance.getContext(),msg,Toast.LENGTH_SHORT).show();
     }
 
-    //run JS thread
-    @JSMethod (uiThread = false)
-    public void fireEventSyncCall(){
-        //implement your module logic here
-    }
+
 
 }
