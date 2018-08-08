@@ -1,9 +1,11 @@
 <template>
     <list class="list">
         <cell>
-            <text @click="onClick" class="text_btn">Android Toast</text>
+            <text @click="printLog" class="text_btn">打印日志</text>
         </cell> 
-
+        <cell>
+            <text @click="showToast" class="text_btn">Android Toast</text>
+        </cell> 
     </list>
 </template>
 <script>
@@ -13,8 +15,11 @@
 
     module.exports = {
         methods: {
-            onClick: function () {
+            printLog: function () {
                 fxpModule.printLog("我是一个测试!");
+            },
+            showToast: function(){
+                fxpModule.showToast("Android Toast");
             }
             
         }

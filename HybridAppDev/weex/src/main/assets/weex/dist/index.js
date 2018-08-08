@@ -148,6 +148,8 @@ module.exports = {
 //
 //
 //
+//
+//
 
 var modal = weex.requireModule('modal')
 //加载MyModule
@@ -155,8 +157,11 @@ var fxpModule = weex.requireModule('MyModule');
 
 module.exports = {
     methods: {
-        onClick: function () {
+        printLog: function () {
             fxpModule.printLog("我是一个测试!");
+        },
+        showToast: function(){
+            fxpModule.showToast("Android Toast");
         }
         
     }
@@ -178,7 +183,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('text', {
     staticClass: ["text_btn"],
     on: {
-      "click": _vm.onClick
+      "click": _vm.printLog
+    }
+  }, [_vm._v("打印日志")])]), _c('cell', {
+    appendAsTree: true,
+    attrs: {
+      "append": "tree"
+    }
+  }, [_c('text', {
+    staticClass: ["text_btn"],
+    on: {
+      "click": _vm.showToast
     }
   }, [_vm._v("Android Toast")])])])
 },staticRenderFns: []}
