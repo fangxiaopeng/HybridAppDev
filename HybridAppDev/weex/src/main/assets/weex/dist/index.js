@@ -153,6 +153,9 @@ module.exports = {
 //
 //
 //
+//
+//
+//
 
 var modal = weex.requireModule('modal')
 //加载MyModule
@@ -160,14 +163,29 @@ var fxpModule = weex.requireModule('MyModule');
 
 module.exports = {
     methods: {
+        // 打印日志
         printLog: function () {
             fxpModule.printLog("我是一个测试!");
         },
+        // Android Toast（传参示例）
         showToast: function(){
             fxpModule.showToast("Android Toast");
         },
+        // 获取设备型号（回调示例）
         getDeviceModel: function(){
             fxpModule.getDeviceModel(function (message) {
+                //回调后处理
+                modal.alert({
+                    message: message,
+                    duration: 0
+                }, function (value) {
+                    console.log('alert callback', value)
+                })
+            });
+        },
+        // 运行/安装 TIM
+        runApp: function(){
+            fxpModule.runApp("com.tencent.tim", function (message) {
                 //回调后处理
                 modal.alert({
                     message: message,
@@ -209,7 +227,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.showToast
     }
-  }, [_vm._v("Android Toast")])]), _c('cell', {
+  }, [_vm._v("Android Toast（传参示例）")])]), _c('cell', {
     appendAsTree: true,
     attrs: {
       "append": "tree"
@@ -219,7 +237,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.getDeviceModel
     }
-  }, [_vm._v("获取设备型号（回调示例）")])])])
+  }, [_vm._v("获取设备型号（回调示例）")])]), _c('cell', {
+    appendAsTree: true,
+    attrs: {
+      "append": "tree"
+    }
+  }, [_c('text', {
+    staticClass: ["text_btn"],
+    on: {
+      "click": _vm.runApp
+    }
+  }, [_vm._v("运行/安装 TIM")])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 

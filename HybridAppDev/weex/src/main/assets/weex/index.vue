@@ -4,10 +4,13 @@
             <text @click="printLog" class="text_btn">打印日志</text>
         </cell> 
         <cell>
-            <text @click="showToast" class="text_btn">Android Toast</text>
+            <text @click="showToast" class="text_btn">Android Toast（传参示例）</text>
         </cell> 
         <cell>
             <text @click="getDeviceModel" class="text_btn">获取设备型号（回调示例）</text>
+        </cell> 
+        <cell>
+            <text @click="runApp" class="text_btn">运行/安装 TIM</text>
         </cell> 
     </list>
 </template>
@@ -18,14 +21,29 @@
 
     module.exports = {
         methods: {
+            // 打印日志
             printLog: function () {
                 fxpModule.printLog("我是一个测试!");
             },
+            // Android Toast（传参示例）
             showToast: function(){
                 fxpModule.showToast("Android Toast");
             },
+            // 获取设备型号（回调示例）
             getDeviceModel: function(){
                 fxpModule.getDeviceModel(function (message) {
+                    //回调后处理
+                    modal.alert({
+                        message: message,
+                        duration: 0
+                    }, function (value) {
+                        console.log('alert callback', value)
+                    })
+                });
+            },
+            // 运行/安装 TIM
+            runApp: function(){
+                fxpModule.runApp("com.tencent.tim", function (message) {
                     //回调后处理
                     modal.alert({
                         message: message,
