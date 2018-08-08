@@ -6,6 +6,9 @@
         <cell>
             <text @click="showToast" class="text_btn">Android Toast</text>
         </cell> 
+        <cell>
+            <text @click="getDeviceModel" class="text_btn">获取设备型号（回调示例）</text>
+        </cell> 
     </list>
 </template>
 <script>
@@ -20,6 +23,17 @@
             },
             showToast: function(){
                 fxpModule.showToast("Android Toast");
+            },
+            getDeviceModel: function(){
+                fxpModule.getDeviceModel(function (message) {
+                    //回调后处理
+                    modal.alert({
+                        message: message,
+                        duration: 0
+                    }, function (value) {
+                        console.log('alert callback', value)
+                    })
+                });
             }
             
         }

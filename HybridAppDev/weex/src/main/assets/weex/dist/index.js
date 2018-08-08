@@ -150,6 +150,9 @@ module.exports = {
 //
 //
 //
+//
+//
+//
 
 var modal = weex.requireModule('modal')
 //加载MyModule
@@ -162,6 +165,17 @@ module.exports = {
         },
         showToast: function(){
             fxpModule.showToast("Android Toast");
+        },
+        getDeviceModel: function(){
+            fxpModule.getDeviceModel(function (message) {
+                //回调后处理
+                modal.alert({
+                    message: message,
+                    duration: 0
+                }, function (value) {
+                    console.log('alert callback', value)
+                })
+            });
         }
         
     }
@@ -195,7 +209,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.showToast
     }
-  }, [_vm._v("Android Toast")])])])
+  }, [_vm._v("Android Toast")])]), _c('cell', {
+    appendAsTree: true,
+    attrs: {
+      "append": "tree"
+    }
+  }, [_c('text', {
+    staticClass: ["text_btn"],
+    on: {
+      "click": _vm.getDeviceModel
+    }
+  }, [_vm._v("获取设备型号（回调示例）")])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 

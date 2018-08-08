@@ -4,6 +4,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.taobao.weex.annotation.JSMethod;
+import com.taobao.weex.bridge.JSCallback;
 import com.taobao.weex.common.WXModule;
 
 
@@ -30,6 +31,22 @@ public class MyModule extends WXModule{
     public void showToast(String msg){
         Toast.makeText(mWXSDKInstance.getContext(),msg,Toast.LENGTH_SHORT).show();
     }
+
+    /**
+     * @Description:    获取设备型号
+     * 带回调示例
+     *
+     * @Author:  fxp
+     * @Date:    2018/8/8   下午5:56
+     * @param    callback
+     * @return   void
+     * @exception/throws
+     */
+    @JSMethod(uiThread = false)
+    public void getDeviceModel(JSCallback callback){
+        callback.invoke(android.os.Build.MODEL);
+    }
+
 
 
 }
