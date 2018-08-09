@@ -12,6 +12,9 @@
         <cell>
             <text @click="runApp" class="text_btn">运行/安装 TIM</text>
         </cell> 
+        <cell>
+            <text @click="exit" class="text_btn">退出应用</text>
+        </cell> 
     </list>
 </template>
 <script>
@@ -52,8 +55,12 @@
                         console.log('alert callback', value)
                     })
                 });
+            },
+            // 退出应用
+            exit: function(){
+                fxpModule.exit();
             }
-            
+
         }
     }
 </script>

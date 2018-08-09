@@ -156,6 +156,9 @@ module.exports = {
 //
 //
 //
+//
+//
+//
 
 var modal = weex.requireModule('modal')
 //加载MyModule
@@ -194,8 +197,12 @@ module.exports = {
                     console.log('alert callback', value)
                 })
             });
+        },
+        // 退出应用
+        exit: function(){
+            fxpModule.exit();
         }
-        
+
     }
 }
 
@@ -247,7 +254,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.runApp
     }
-  }, [_vm._v("运行/安装 TIM")])])])
+  }, [_vm._v("运行/安装 TIM")])]), _c('cell', {
+    appendAsTree: true,
+    attrs: {
+      "append": "tree"
+    }
+  }, [_c('text', {
+    staticClass: ["text_btn"],
+    on: {
+      "click": _vm.exit
+    }
+  }, [_vm._v("退出应用")])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
