@@ -67,4 +67,18 @@ public class MyModule extends WXModule{
 //        callback.invoke("");
     }
 
+    /**  
+     * @Description:    退出应用
+     * 
+     * @Author:  fxp
+     * @Date:    2018/8/9   上午10:29
+     * @param
+     * @return   void 
+     * @exception/throws
+     */  
+    @JSMethod(uiThread = false)
+    public void exit(){
+
+    }
+
 }
